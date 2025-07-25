@@ -31,8 +31,10 @@ export const metadata: Metadata = {
     description:
       "国産豚100％使用の完全無添加背脂。レトルト殺菌済みで常温1年保存可能。カップ麺やインスタントラーメンが劇的に美味しく変身。個人向け・業務用をご用意。",
     images: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/OGP_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89%201.jpg-i3llVClPOxeiThP3k17kdjeeTQ4ACV.jpeg",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/OGP_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89%201.jpg-i9Jm8bJf7s9YVgrsTxk0gQS1c6eFxp.jpeg",
     ],
+    site: "@aizu_brand_kan",
+    creator: "@aizu_brand_kan",
   },
   robots: {
     index: true,
