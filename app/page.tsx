@@ -4,33 +4,18 @@ import Image from "next/image"
 import { useEffect } from "react"
 import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, Star } from "lucide-react"
+import { Check, Star, Soup, Thermometer, Combine } from "lucide-react"
 import SharedLayout from "@/components/shared-layout"
 import Link from "next/link"
 import Section from "@/components/section"
 
 export default function PorkBackfatLanding() {
   useEffect(() => {
-    // Google Analytics page view tracking
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("config", "G-JPP8PYH31W", {
-        page_title: "プロ仕様無添加背脂 - 会津ブランド館",
-        page_location: window.location.href,
-      })
-    }
+    // Analytics tracking can be added here
   }, [])
 
   const handlePurchaseClick = (size: string, marketplace: string) => {
     console.log(`Purchase clicked: ${size} - ${marketplace}`)
-
-    // Google Analytics event tracking
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "purchase_click", {
-        event_category: "ecommerce",
-        event_label: `${size}_${marketplace}`,
-        value: size === "backfat" ? 1250 : 0,
-      })
-    }
   }
 
   return (
@@ -163,49 +148,48 @@ export default function PorkBackfatLanding() {
       {/* What is Backfat Section (New Design) */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">豚背脂とは？</h2>
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-4">
-              <strong>豚の背中の脂肪部分（皮の下）</strong>を指します。ラード（精製脂）と違って、
-              <strong>あらごしの脂身（塊や粒が残った状態）</strong>をそのまま使用するのが特徴です。
-            </p>
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-              スープに溶け出すことで、深いコクとまろやかな口当たり、そして豊かな風味を生み出します。
-            </p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">豚背脂とは？</h2>
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-4">
+                <strong>豚の背中の脂肪部分（皮の下）</strong>を指します。ラード（精製脂）と違って、
+                <strong>あらごしの脂身（塊や粒が残った状態）</strong>をそのまま使用するのが特徴です。
+              </p>
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                スープに溶け出すことで、深いコクとまろやかな口当たり、そして豊かな風味を生み出します。
+              </p>
+            </div>
+            <div className="relative aspect-square rounded-lg overflow-hidden">
+              <Image src="/images/ramen-bowl-new.png" alt="背脂入りラーメン" fill className="object-contain" />
+            </div>
           </div>
 
-          <div className="relative aspect-video rounded-lg overflow-hidden max-w-5xl mx-auto mt-12 shadow-lg">
-            <Image
-              src="/images/ramen-with-backfat-closeup.png"
-              alt="背脂がたっぷり入ったラーメンのクローズアップ"
-              fill
-              className="object-contain bg-white"
-            />
-          </div>
-
-          <div className="max-w-4xl mx-auto mt-24">
+          <div className="max-w-5xl mx-auto mt-24">
             <h3 className="text-3xl font-bold text-center text-gray-800 mb-16">背脂がラーメンを美味しくする理由</h3>
-            <div className="space-y-8">
-              <div className="text-center">
-                <h4 className="text-xl font-bold text-gray-800 mb-4">コク (旨味の層) を増す</h4>
-                <p className="text-gray-700 leading-relaxed">
-                  背脂は「アミノ酸」「脂肪酸」「コラーゲン分解物」を含み、スープの旨味を物理的にも化学的にも"厚く"します。
-                </p>
-              </div>
-
-              <div className="text-center">
-                <h4 className="text-xl font-bold text-gray-800 mb-4">スープの熱を逃さず、口当たりがまろやかに</h4>
-                <p className="text-gray-700 leading-relaxed">
-                  脂の膜がスープ表面を覆い冷めにくくし、口に入れた瞬間、トロッとした"まろみ"が舌に残ります。
-                </p>
-              </div>
-
-              <div className="text-center">
-                <h4 className="text-xl font-bold text-gray-800 mb-4">味の一体感とパンチを出す</h4>
-                <p className="text-gray-700 leading-relaxed">
-                  背脂がタレ・出汁・香味油を"まとめる"潤滑剤のように働き、スープに粘度と深みが生まれます。
-                </p>
-              </div>
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              {[
+                {
+                  icon: <Soup className="w-12 h-12 mx-auto text-amber-800" />,
+                  title: "コク (旨味の層) を増す",
+                  desc: "背脂は「アミノ酸」「脂肪酸」「コラーゲン分解物」を含み、スープの旨味を物理的にも化学的にも“厚く”します。",
+                },
+                {
+                  icon: <Thermometer className="w-12 h-12 mx-auto text-amber-800" />,
+                  title: "スープの熱を逃さず、口当たりがまろやかに",
+                  desc: "脂の膜がスープ表面を覆い冷めにくくし、口に入れた瞬間、トロッとした“まろみ”が舌に残ります。",
+                },
+                {
+                  icon: <Combine className="w-12 h-12 mx-auto text-amber-800" />,
+                  title: "味の一体感とパンチを出す",
+                  desc: "背脂がタレ・出汁・香味油を“まとめる”潤滑剤のように働き、スープに粘度と深みが生まれます。",
+                },
+              ].map((reason, index) => (
+                <div key={index} className="bg-stone-50 p-8 rounded-lg border border-stone-200">
+                  <div className="mb-4">{reason.icon}</div>
+                  <h4 className="text-xl font-bold text-gray-800 mb-3">{reason.title}</h4>
+                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{reason.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -314,30 +298,6 @@ export default function PorkBackfatLanding() {
         </div>
       </section>
 
-      {/* Shipping and delivery banners */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            <div className="relative aspect-[3/1]">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%E9%80%81%E6%96%99%E7%84%A1%E6%96%99-01.jpg-Cu0IOjGEKEB51dDMBnsffDMmo59Bx6.jpeg"
-                alt="送料無料 沖縄・離島地域除く"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <div className="relative aspect-[3/1]">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%E5%8D%B3%E6%97%A5%E7%99%BA%E9%80%81-01.jpg-wOKkqTWzDlls8YLUgTUIE8RN6gCKB0.jpeg"
-                alt="14時までのご注文で即日発送"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* お客様の声セクション (Reverted to original) */}
       <Section id="reviews" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
@@ -345,26 +305,54 @@ export default function PorkBackfatLanding() {
           <div className="space-y-6">
             {[
               {
-                source: "Amazon",
                 comment:
-                  '二郎系の再現度が高い！にんにく＋この背脂で、家ラーメンが二郎になった（笑）ただ、個人的にはもう少し"味付き"タイプも選べると嬉しい。',
-                rating: 4,
+                  "まさか…カップ麺がここまで化けるとは！背脂を入れた瞬間、あの安いカップ麺がラーメン屋みたいな味に。正直ビビりました。個包装で便利だし、もう手放せません。",
+                rating: 5,
               },
               {
-                source: "Amazon",
-                comment: "防災用品として購入しましたが、普段使いでも重宝しています。レトルトなので安心ですね。",
-                rating: 4,
-              },
-              {
-                source: "Amazon",
                 comment:
-                  "白ごはんにのせても美味しかった。試しに背脂をご飯にのせて醤油を垂らしたら…ヤバい旨さ。罪の味だけどまたやると思う（笑）",
+                  '二郎系にドハマり中の私には神アイテム。にんにくと一緒に入れると完璧。家で"アブラマシ"ができる幸せ…。背脂好きなら一度は試してみてほしい。',
+                rating: 5,
+              },
+              {
+                comment:
+                  "白ごはんにのせてみたら、罪の味でした。熱々ご飯にちょっと背脂かけて醤油。やっちゃいけない味だけど、クセになります…。",
                 rating: 4,
               },
               {
-                source: "Amazon",
-                comment: "キャンプで使いました。お湯で温めるだけで本格的な背脂ラーメンが作れて感動しました。",
+                comment:
+                  "備蓄用に買ったけど、使いすぎてもう在庫ゼロ（笑）レトルトで常温保存ってありがたすぎる。アウトドアや深夜の背徳飯にも大活躍中。",
+                rating: 5,
+              },
+              {
+                comment:
+                  "脂なのに臭くない！むしろ甘くてまろやか。豚臭さが一切なくて驚いた。スープに溶かすと、グッとコクが増すのが分かります。",
+                rating: 5,
+              },
+              {
+                comment:
+                  "業務用10kgを導入！コスパと効率が最高です。仕込み時間が減って、しかも冷蔵スペースも空く。味も安定してて、トッピングとしての自由度も高い。",
+                rating: 5,
+              },
+              {
+                comment:
+                  "味噌ラーメンにちょい足ししたら最強だった。コクが増すだけじゃなく、全体の塩味がまろやかになる感じ。家族にも好評で、あっという間に消えました。",
                 rating: 4,
+              },
+              {
+                comment:
+                  "カラオケ店のフードに導入、評判◎です。夜ラーメンに背脂を使ったら「こってり系がある店」として認知され始めた。差別化メニューにピッタリ。",
+                rating: 5,
+              },
+              {
+                comment:
+                  "個包装80gって地味にちょうどいい。ひとり分のラーメンに使うのに、余らないのが嬉しい。しかも湯煎ですぐ使えるのが便利すぎる。",
+                rating: 4,
+              },
+              {
+                comment:
+                  "罪悪感すらご褒美。背脂の虜になりました。あっさりスープに入れると化けます。冷蔵不要なのも最高。防災食としても絶対リピートします。",
+                rating: 5,
               },
             ].map((review, i) => (
               <Card key={i}>
@@ -459,7 +447,31 @@ export default function PorkBackfatLanding() {
         </div>
       </section>
 
-      {/* Purchase Section (Bottom) (Reverted to original) */}
+      {/* Shipping and delivery banners */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            <div className="relative aspect-[3/1]">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%E9%80%81%E6%96%99%E7%84%A1%E6%96%99-01.jpg-Cu0IOjGEKEB51dDMBnsffDMmo59Bx6.jpeg"
+                alt="送料無料 沖縄・離島地域除く"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative aspect-[3/1]">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%E5%8D%B3%E6%97%A5%E7%99%BA%E9%80%81-01.jpg-wOKkqTWzDlls8YLUgTUIE8RN6gCKB0.jpeg"
+                alt="14時までのご注文で即日発送"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Shipping and delivery banners */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h3 className="text-2xl font-bold text-center mb-6">ご購入はこちらから</h3>
@@ -467,7 +479,7 @@ export default function PorkBackfatLanding() {
             {/* Yahoo!ショッピング */}
             <div className="bg-[#ffdddd] p-6">
               <Link
-                href="#"
+                href="https://store.shopping.yahoo.co.jp/aizubrandhall/b9f1bbbac7.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handlePurchaseClick("backfat", "yahoo")}
@@ -489,7 +501,7 @@ export default function PorkBackfatLanding() {
             {/* 楽天市場 */}
             <div className="bg-[#deeeff] p-6">
               <Link
-                href="#"
+                href="https://item.rakuten.co.jp/aizubrandhall/c/0000000048/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handlePurchaseClick("backfat", "rakuten")}
@@ -511,7 +523,7 @@ export default function PorkBackfatLanding() {
             {/* Amazon */}
             <div className="bg-[#e8ffdd] p-6">
               <Link
-                href="#"
+                href="https://www.amazon.co.jp/stores/page/6F0FB870-1D32-41FF-9195-A4EB531231E4"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handlePurchaseClick("backfat", "amazon")}
