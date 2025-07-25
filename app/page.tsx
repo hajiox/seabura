@@ -9,13 +9,40 @@ import SharedLayout from "@/components/shared-layout"
 import Link from "next/link"
 import Section from "@/components/section"
 
+// ファイルの先頭に追加
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void
+    dataLayer: any[]
+  }
+}
+
 export default function PorkBackfatLanding() {
+  // useEffect部分を更新
   useEffect(() => {
-    // Analytics tracking can be added here
+    // Google Analytics ページビュー
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("config", "G-JPP8PYH31W", {
+        page_title: "プロ仕様無添加背脂 - ランディングページ",
+        page_location: window.location.href,
+      })
+    }
   }, [])
 
+  // handlePurchaseClick関数を更新
   const handlePurchaseClick = (size: string, marketplace: string) => {
     console.log(`Purchase clicked: ${size} - ${marketplace}`)
+
+    // Google Analytics イベント送信
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "purchase_click", {
+        event_category: "ecommerce",
+        event_label: `${size} - ${marketplace}`,
+        product_name: "無添加背脂",
+        marketplace: marketplace,
+        product_size: size,
+      })
+    }
   }
 
   return (
@@ -159,7 +186,7 @@ export default function PorkBackfatLanding() {
                 スープに溶け出すことで、深いコクとまろやかな口当たり、そして豊かな風味を生み出します。
               </p>
             </div>
-            <div className="relative aspect-square rounded-lg overflow-hidden">
+            <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-square rounded-lg overflow-hidden">
               <Image src="/images/ramen-bowl-new.png" alt="背脂入りラーメン" fill className="object-contain" />
             </div>
           </div>
