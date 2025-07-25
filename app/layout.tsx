@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import Script from "next/script"
 
 export const metadata: Metadata = {
   title: "【公式】プロ仕様無添加背脂｜国産豚100％・常温1年保存・送料無料",
@@ -38,6 +39,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-JPP8PYH31W" strategy="afterInteractive" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JPP8PYH31W');
+        `}
+      </Script>
       <body>{children}</body>
     </html>
   )

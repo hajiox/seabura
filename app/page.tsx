@@ -2,21 +2,35 @@
 
 import Image from "next/image"
 import { useEffect } from "react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, Star, ShoppingCart } from "lucide-react"
+import { Check, Star } from "lucide-react"
 import SharedLayout from "@/components/shared-layout"
 import Link from "next/link"
 import Section from "@/components/section"
 
 export default function PorkBackfatLanding() {
   useEffect(() => {
-    // Analytics tracking can be added here
+    // Google Analytics page view tracking
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("config", "G-JPP8PYH31W", {
+        page_title: "プロ仕様無添加背脂 - 会津ブランド館",
+        page_location: window.location.href,
+      })
+    }
   }, [])
 
   const handlePurchaseClick = (size: string, marketplace: string) => {
     console.log(`Purchase clicked: ${size} - ${marketplace}`)
+
+    // Google Analytics event tracking
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "purchase_click", {
+        event_category: "ecommerce",
+        event_label: `${size}_${marketplace}`,
+        value: size === "backfat" ? 1250 : 0,
+      })
+    }
   }
 
   return (
@@ -38,12 +52,12 @@ export default function PorkBackfatLanding() {
           <Badge className="mb-4 text-base font-semibold bg-amber-800 text-white hover:bg-amber-900">
             プロ仕様の品質
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             プロ仕様の"無添加背脂"を、
             <br />
             あなたのラーメンに。
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             国産豚100％使用。レトルト殺菌済みで常温1年保存可能。ご家庭でも、業務用でも。こってり派が待ち望んだ、"本物の背脂"をお届けします。
           </p>
         </div>
@@ -53,7 +67,7 @@ export default function PorkBackfatLanding() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-3">選ばれる6つの理由</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3">選ばれる6つの理由</h2>
             <div className="w-24 h-1 bg-amber-800 mx-auto rounded-full"></div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -122,7 +136,7 @@ export default function PorkBackfatLanding() {
               />
             </div>
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                 この一さじで、
                 <br />
                 スープが店の味になる。
@@ -149,117 +163,139 @@ export default function PorkBackfatLanding() {
       {/* What is Backfat Section (New Design) */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-800 mb-6">豚背脂とは？</h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                <strong>豚の背中の脂肪部分（皮の下）</strong>を指します。ラード（精製脂）と違って、
-                <strong>あらごしの脂身（塊や粒が残った状態）</strong>をそのまま使用するのが特徴です。
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                スープに溶け出すことで、深いコクとまろやかな口当たり、そして豊かな風味を生み出します。
-              </p>
-            </div>
-            <div className="relative aspect-square rounded-lg overflow-hidden">
-              <Image src="/images/ramen-bowl-new.png" alt="背脂入りラーメン" fill className="object-contain" />
-            </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">豚背脂とは？</h2>
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-4">
+              <strong>豚の背中の脂肪部分（皮の下）</strong>を指します。ラード（精製脂）と違って、
+              <strong>あらごしの脂身（塊や粒が残った状態）</strong>をそのまま使用するのが特徴です。
+            </p>
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+              スープに溶け出すことで、深いコクとまろやかな口当たり、そして豊かな風味を生み出します。
+            </p>
           </div>
 
-          <div className="max-w-6xl mx-auto mt-24">
-            <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">背脂がラーメンを美味しくする理由</h3>
-            <div className="space-y-10">
-              {[
-                {
-                  num: "01",
-                  title: "コク（旨味の層）を増す",
-                  desc: "背脂は「アミノ酸」「脂肪酸」「コラーゲン分解物」を含み、スープの旨味を物理的にも化学的にも“厚く”します。",
-                },
-                {
-                  num: "02",
-                  title: "スープの熱を逃さず、口当たりがまろやかに",
-                  desc: "脂の膜がスープ表面を覆い冷めにくくし、口に入れた瞬間、トロッとした“まろみ”が舌に残ります。",
-                },
-                {
-                  num: "03",
-                  title: "味の一体感とパンチを出す",
-                  desc: "背脂がタレ・出汁・香味油を“まとめる”潤滑剤のように働き、スープに粘度と深みが生まれます。",
-                },
-              ].map((reason) => (
-                <div key={reason.num} className="grid md:grid-cols-3 gap-6 items-center">
-                  <div className="md:col-span-1 text-center md:text-right">
-                    <span className="text-6xl font-bold text-amber-800 opacity-20">{reason.num}</span>
-                    <h4 className="text-2xl font-bold text-gray-800 -mt-8">{reason.title}</h4>
-                  </div>
-                  <div className="md:col-span-2">
-                    <p className="text-lg text-gray-600 leading-relaxed">{reason.desc}</p>
-                  </div>
-                </div>
-              ))}
+          <div className="relative aspect-video rounded-lg overflow-hidden max-w-5xl mx-auto mt-12 shadow-lg">
+            <Image
+              src="/images/ramen-with-backfat-closeup.png"
+              alt="背脂がたっぷり入ったラーメンのクローズアップ"
+              fill
+              className="object-contain bg-white"
+            />
+          </div>
+
+          <div className="max-w-4xl mx-auto mt-24">
+            <h3 className="text-3xl font-bold text-center text-gray-800 mb-16">背脂がラーメンを美味しくする理由</h3>
+            <div className="space-y-8">
+              <div className="text-center">
+                <h4 className="text-xl font-bold text-gray-800 mb-4">コク (旨味の層) を増す</h4>
+                <p className="text-gray-700 leading-relaxed">
+                  背脂は「アミノ酸」「脂肪酸」「コラーゲン分解物」を含み、スープの旨味を物理的にも化学的にも"厚く"します。
+                </p>
+              </div>
+
+              <div className="text-center">
+                <h4 className="text-xl font-bold text-gray-800 mb-4">スープの熱を逃さず、口当たりがまろやかに</h4>
+                <p className="text-gray-700 leading-relaxed">
+                  脂の膜がスープ表面を覆い冷めにくくし、口に入れた瞬間、トロッとした"まろみ"が舌に残ります。
+                </p>
+              </div>
+
+              <div className="text-center">
+                <h4 className="text-xl font-bold text-gray-800 mb-4">味の一体感とパンチを出す</h4>
+                <p className="text-gray-700 leading-relaxed">
+                  背脂がタレ・出汁・香味油を"まとめる"潤滑剤のように働き、スープに粘度と深みが生まれます。
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Product Lineup Section (New Design) */}
+      {/* Product Lineup Section (Updated to 3 products) */}
       <section className="py-24 bg-stone-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">商品ラインナップ</h2>
-          <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto items-start">
-            {/* Individual Product */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">
+            商品ラインナップ
+          </h2>
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
+            {/* Individual Product - 8 pieces */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
-              <div className="relative aspect-video w-full bg-gray-100">
+              <div className="relative aspect-square w-full bg-gray-100">
                 <Image
                   src="/images/product-individual-8pack.jpg"
                   alt="ラーメン用背脂 8個パック"
                   fill
-                  className="object-contain p-4"
+                  className="object-contain p-2"
                 />
               </div>
-              <div className="p-8 flex-grow flex flex-col">
-                <h3 className="text-2xl font-bold text-gray-800">【個人向け】ラーメン用 国産豚背脂</h3>
+              <div className="p-6 flex-grow flex flex-col">
+                <h3 className="text-xl font-bold text-gray-800">【個人向け】ラーメン用 国産豚背脂</h3>
                 <p className="text-gray-500 mb-4">80g×8個</p>
-                <div className="text-4xl font-bold text-amber-900 mb-1">1,250円</div>
+                <div className="text-2xl sm:text-3xl font-bold text-amber-900 mb-1">1,250円</div>
                 <p className="text-gray-600 mb-6">（税込・送料込）</p>
-                <div className="space-y-3 mb-8 flex-grow">
+                <div className="space-y-2 mb-6 flex-grow text-sm">
                   {[
                     "内容量：640g（80g×8個）",
                     "保存：常温保存OK（製造より1年）",
-                    "用途：カップ麺、家ラーメン、備蓄に",
+                    "用途：カップ麺、家ラーメンに",
                     "原材料：国産豚背脂のみ（完全無添加）",
                   ].map((item, i) => (
                     <div key={i} className="flex items-start">
-                      <Check className="w-5 h-5 text-amber-800 mr-2 mt-1 flex-shrink-0" />
-                      <span>{item}</span>
+                      <Check className="w-4 h-4 text-amber-800 mr-2 mt-1 flex-shrink-0" />
+                      <span className="text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
-                <Button
-                  size="lg"
-                  className="w-full bg-amber-800 hover:bg-amber-900 text-white text-lg font-bold"
-                  onClick={() => handlePurchaseClick("80g", "individual")}
-                >
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  今すぐ購入する
-                </Button>
               </div>
             </div>
 
-            {/* Business Product */}
+            {/* Family Product - 24 pieces */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
-              <div className="relative aspect-video w-full bg-gray-100">
+              <div className="relative aspect-square w-full bg-gray-100">
+                <Image
+                  src="/images/product-24pack.jpg"
+                  alt="ラーメン用背脂 24個パック"
+                  fill
+                  className="object-contain p-2"
+                />
+              </div>
+              <div className="p-6 flex-grow flex flex-col">
+                <h3 className="text-xl font-bold text-gray-800">【ファミリー向け】ラーメン用 国産豚背脂</h3>
+                <p className="text-gray-500 mb-4">80g×24個</p>
+                <div className="text-2xl sm:text-3xl font-bold text-amber-900 mb-1">3,200円</div>
+                <p className="text-gray-600 mb-6">（税込・送料込）</p>
+                <div className="space-y-2 mb-6 flex-grow text-sm">
+                  {[
+                    "内容量：1,920g（80g×24個）",
+                    "保存：常温保存OK（製造より1年）",
+                    "用途：まとめ買い、備蓄に最適",
+                    "お得：8個入りより約20%お得",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start">
+                      <Check className="w-4 h-4 text-amber-800 mr-2 mt-1 flex-shrink-0" />
+                      <span className="text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Business Product - 10kg */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+              <div className="relative aspect-square w-full bg-gray-100">
                 <Image
                   src="/images/product-business-10kg.jpg"
                   alt="業務用ラーメン用背脂 10kg"
                   fill
-                  className="object-contain p-4"
+                  className="object-contain p-2"
                 />
               </div>
-              <div className="p-8 flex-grow flex flex-col">
-                <h3 className="text-2xl font-bold text-gray-800">【業務用】ラーメン用 背脂パック</h3>
+              <div className="p-6 flex-grow flex flex-col">
+                <h3 className="text-xl font-bold text-gray-800">【業務用】ラーメン用 背脂パック</h3>
                 <p className="text-gray-500 mb-4">1kg×10袋</p>
-                <div className="text-4xl font-bold text-amber-900 mb-1">6,500円</div>
+                <div className="text-2xl sm:text-3xl font-bold text-amber-900 mb-1">6,500円</div>
                 <p className="text-gray-600 mb-6">（税込・送料込）</p>
-                <div className="space-y-3 mb-8 flex-grow">
+                <div className="space-y-2 mb-6 flex-grow text-sm">
                   {[
                     "内容量：10kg（1kgパック×10袋）",
                     "コスト：1食あたり約52円（80cc使用時）",
@@ -267,19 +303,11 @@ export default function PorkBackfatLanding() {
                     "効率：冷蔵スペース不要で厨房効率アップ",
                   ].map((item, i) => (
                     <div key={i} className="flex items-start">
-                      <Check className="w-5 h-5 text-amber-800 mr-2 mt-1 flex-shrink-0" />
-                      <span>{item}</span>
+                      <Check className="w-4 h-4 text-amber-800 mr-2 mt-1 flex-shrink-0" />
+                      <span className="text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
-                <Button
-                  size="lg"
-                  className="w-full bg-gray-800 hover:bg-gray-900 text-white text-lg font-bold"
-                  onClick={() => handlePurchaseClick("1kg", "business")}
-                >
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  業務用パックを購入する
-                </Button>
               </div>
             </div>
           </div>
@@ -350,9 +378,7 @@ export default function PorkBackfatLanding() {
                         className="rounded-full object-cover"
                       />
                     </div>
-                    <span>
-                      お客様 {i + 1} （{review.source}）
-                    </span>
+                    <span>お客様 {i + 1}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
