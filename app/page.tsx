@@ -523,6 +523,13 @@ export default function PorkBackfatLanding() {
               </Link>
               <h4 className="font-bold mt-4 mb-2 text-center">Yahoo!ショッピング</h4>
               <p className="text-sm text-center">PayPayポイントが貯まる使えるショッピングモールはこちら</p>
+              <div className="mt-3 bg-red-100 border border-red-300 rounded-lg p-3">
+                <p className="text-sm font-bold text-red-700 text-center">
+                  先着100商品限り5％OFFクーポン発行中
+                  <br />
+                  <span className="text-xs">（数量になり次第終了）</span>
+                </p>
+              </div>
             </div>
 
             {/* 楽天市場 */}
@@ -545,6 +552,13 @@ export default function PorkBackfatLanding() {
               </Link>
               <h4 className="font-bold mt-4 mb-2 text-center">楽天市場</h4>
               <p className="text-sm text-center">楽天ポイントが使える国内最大級のショッピングモールはこちら</p>
+              <div className="mt-3 bg-blue-100 border border-blue-300 rounded-lg p-3">
+                <p className="text-sm font-bold text-blue-700 text-center">
+                  先着100商品限り5％OFFクーポン発行中
+                  <br />
+                  <span className="text-xs">（数量になり次第終了）</span>
+                </p>
+              </div>
             </div>
 
             {/* Amazon */}
@@ -567,6 +581,13 @@ export default function PorkBackfatLanding() {
               </Link>
               <h4 className="font-bold mt-4 mb-2 text-center">Amazon</h4>
               <p className="text-sm text-center">世界最大のショッピングモールでのお買い物はこちら</p>
+              <div className="mt-3 bg-green-100 border border-green-300 rounded-lg p-3">
+                <p className="text-sm font-bold text-green-700 text-center">
+                  先着100商品限り5％OFFクーポン発行中
+                  <br />
+                  <span className="text-xs">（数量になり次第終了）</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
