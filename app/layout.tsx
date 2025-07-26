@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import Script from "next/script"
+import "./globals.css" // Import globals.css at the top of the file
 
 export const metadata: Metadata = {
   title: "【公式】プロ仕様無添加背脂｜国産豚100％・常温1年保存・送料無料｜会津ブランド館",
@@ -62,13 +63,13 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         {/* Google Analytics */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-JPP8PYH31W" strategy="afterInteractive" />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-2EJ6JCB9N2" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-JPP8PYH31W');
+            gtag('config', 'G-2EJ6JCB9N2');
           `}
         </Script>
       </head>
@@ -76,6 +77,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-import './globals.css'

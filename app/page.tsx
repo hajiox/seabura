@@ -22,7 +22,7 @@ export default function PorkBackfatLanding() {
   useEffect(() => {
     // Google Analytics ページビュー
     if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("config", "G-JPP8PYH31W", {
+      window.gtag("config", "G-2EJ6JCB9N2", {
         page_title: "プロ仕様無添加背脂 - ランディングページ",
         page_location: window.location.href,
       })
