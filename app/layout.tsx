@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://aizubrandhall.com/backfat",
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({

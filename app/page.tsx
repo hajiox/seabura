@@ -222,13 +222,13 @@ export default function PorkBackfatLanding() {
         </div>
       </section>
 
-      {/* Product Lineup Section (Updated to 3 products) */}
+      {/* Product Lineup Section (Updated to 2 products) */}
       <section className="py-24 bg-stone-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">
             商品ラインナップ
           </h2>
-          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
+          <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
             {/* Individual Product - 8 pieces */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
               <div className="relative aspect-square w-full bg-gray-100">
@@ -290,37 +290,6 @@ export default function PorkBackfatLanding() {
                 </div>
               </div>
             </div>
-
-            {/* Business Product - 10kg */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
-              <div className="relative aspect-square w-full bg-gray-100">
-                <Image
-                  src="/images/product-business-10kg.jpg"
-                  alt="業務用ラーメン用背脂 10kg"
-                  fill
-                  className="object-contain p-2"
-                />
-              </div>
-              <div className="p-6 flex-grow flex flex-col">
-                <h3 className="text-xl font-bold text-gray-800">【業務用】ラーメン用 背脂パック</h3>
-                <p className="text-gray-500 mb-4">1kg×10袋</p>
-                <div className="text-2xl sm:text-3xl font-bold text-amber-900 mb-1">6,500円</div>
-                <p className="text-gray-600 mb-6">（税込・送料込）</p>
-                <div className="space-y-2 mb-6 flex-grow text-sm">
-                  {[
-                    "内容量：10kg（1kgパック×10袋）",
-                    "コスト：1食あたり約52円（80cc使用時）",
-                    "特徴：レトルト殺菌済み・常温保存OK",
-                    "効率：冷蔵スペース不要で厨房効率アップ",
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start">
-                      <Check className="w-4 h-4 text-amber-800 mr-2 mt-1 flex-shrink-0" />
-                      <span className="text-sm">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -354,21 +323,6 @@ export default function PorkBackfatLanding() {
               {
                 comment:
                   "脂なのに臭くない！むしろ甘くてまろやか。豚臭さが一切なくて驚いた。スープに溶かすと、グッとコクが増すのが分かります。",
-                rating: 5,
-              },
-              {
-                comment:
-                  "業務用10kgを導入！コスパと効率が最高です。仕込み時間が減って、しかも冷蔵スペースも空く。味も安定してて、トッピングとしての自由度も高い。",
-                rating: 5,
-              },
-              {
-                comment:
-                  "味噌ラーメンにちょい足ししたら最強だった。コクが増すだけじゃなく、全体の塩味がまろやかになる感じ。家族にも好評で、あっという間に消えました。",
-                rating: 4,
-              },
-              {
-                comment:
-                  "カラオケ店のフードに導入、評判◎です。夜ラーメンに背脂を使ったら「こってり系がある店」として認知され始めた。差別化メニューにピッタリ。",
                 rating: 5,
               },
               {
@@ -425,7 +379,7 @@ export default function PorkBackfatLanding() {
             <div className="bg-white p-6 rounded-lg border">
               <h3 className="text-xl font-bold mb-3 text-gray-900">開封後はどうすればいいですか？</h3>
               <p className="text-gray-700">
-                開封後は冷蔵庫で保管し、できるだけ当日中にご使用ください。使いきれない場合は、小分け冷凍も可能です（特に1kgパックは業務用冷凍がおすすめです）。
+                開封後は冷蔵庫で保管し、できるだけ当日中にご使用ください。使いきれない場合は、小分け冷凍も可能です。
               </p>
             </div>
 
@@ -461,13 +415,6 @@ export default function PorkBackfatLanding() {
               <h3 className="text-xl font-bold mb-3 text-gray-900">アレルギーや添加物は？</h3>
               <p className="text-gray-700">
                 原材料は国産豚の背脂のみ。無添加・無香料・無保存料なので、安心してご使用いただけます。
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg border">
-              <h3 className="text-xl font-bold mb-3 text-gray-900">飲食店向けの使い方は？</h3>
-              <p className="text-gray-700">
-                1kgパックはスープのベースや背脂増し用に便利。仕込みの手間を省けるうえ、常温保存でスペースも節約できます。小分け冷凍しておくとロスも防げます。
               </p>
             </div>
           </div>
